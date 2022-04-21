@@ -1,19 +1,19 @@
 using System.ComponentModel.DataAnnotations;
-
 namespace TodoApi.Model;
+
 
 public class TodoItem
 {
-    public uint TodoItemId { get; set; }
-    public string? Task { get; set; }
-    public string? Instructions { get; set; }
-    public bool isComplete { get; set; } = false;
 
-    [Display(Name = "Date Created")]
-    [DataType(DataType.Date)]
-    public DateTime DateCreated { get; set; }
+	public uint TodoItemId { get; set; }
+	public string? Task { get; set; }
+	public string? Instructions { get; set; }
 
-    [Display(Name = "Deadline")]
-    [DataType(DataType.Date)]
-    public DateTime Deadline { get; set; }
+	[Range(1, 5)]
+	public uint Priority { get; set; } = 5;
+
+	public DateTime? Deadline { get; set; }
+	public bool IsComplete { get; set; } = false;
+
+
 }

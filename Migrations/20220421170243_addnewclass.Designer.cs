@@ -11,8 +11,8 @@ using TodoApi.Model;
 namespace TodoApi.Migrations
 {
     [DbContext(typeof(TodoDbContext))]
-    [Migration("20220420173054_newclass")]
-    partial class newclass
+    [Migration("20220421170243_addnewclass")]
+    partial class addnewclass
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,20 +27,20 @@ namespace TodoApi.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int unsigned");
 
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("Deadline")
+                    b.Property<DateTime?>("Deadline")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Instructions")
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("IsComplete")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<uint>("Priority")
+                        .HasColumnType("int unsigned");
+
                     b.Property<string>("Task")
                         .HasColumnType("longtext");
-
-                    b.Property<bool>("isComplete")
-                        .HasColumnType("tinyint(1)");
 
                     b.HasKey("TodoItemId");
 

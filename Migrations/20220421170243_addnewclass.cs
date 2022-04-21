@@ -1,11 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace TodoApi.Migrations
 {
-    public partial class todoinit : Migration
+    public partial class addnewclass : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -22,7 +23,9 @@ namespace TodoApi.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Instructions = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    isComplete = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                    Priority = table.Column<uint>(type: "int unsigned", nullable: false),
+                    Deadline = table.Column<DateTime>(type: "datetime(6)", nullable: true),
+                    IsComplete = table.Column<bool>(type: "tinyint(1)", nullable: false)
                 },
                 constraints: table =>
                 {
